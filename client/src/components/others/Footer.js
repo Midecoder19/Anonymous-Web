@@ -16,12 +16,12 @@ const Footer = () => {
           className="text-light"
           target="_blank"
           rel="noopener noreferrer"
-          href="https://github.com/ekamid/gopone-a-mernstack-anonymous-messaging-app"
+          href=""
         >
           Github
         </a>
       </div>
-      <p className="text-light">© Gopone - 2020 </p>
+      <p className="text-light">© Midecoder - 2024 </p>
     </div>
   );
 };
