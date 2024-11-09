@@ -6,12 +6,11 @@ const URL = process.env.URL;
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(URL, {
+    mongoose.connect(URL, {
       useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: true,
+      useUnifiedTopology: true
     });
+    
 
     console.log("Connected to mongodb");
   } catch (err) {
