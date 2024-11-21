@@ -1,33 +1,18 @@
 const express = require("express");
 const path = require("path");
 
-//init app
 const app = express();
+const PORT = process.env.PORT || 10000;
 
-//connect mongodb
-const connectDB = require("./config/db");
-connectDB();
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, "client", "build")));
 
-//express parser middleware
-app.use(express.json({ extended: true }));
+// Handle React routing, return all requests to React app
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
-//routes
-app.use("/api/register", require("./routes/register"));
-app.use("/api/auth", require("./routes/auth"));
-app.use("/api/messages", require("./routes/messages"));
-app.use("/api/", require("./routes/message"));
-
-//for heroku deployment
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  });
-}
-
-//server listening
-const PORT = process.env.PORT || 5000;
+// Start the server
 app.listen(PORT, () => {
   console.log(`Server Running in port ${PORT}`);
 });
