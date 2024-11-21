@@ -4,7 +4,7 @@
   "description": "A simple anonymous messaging MERN app",
   "main": "server.js",
   "scripts": {
-    "build": "npm run build --prefix client",
+    "build": "npm run build --prefix ../client",
     "client-install": "npm install --prefix client",
     "start": "node server.js",
     "server": "nodemon server.js",
